@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ben Pereira - My Hobbies</title>
+    
+    <meta name="description" content="A look at the hobbies and creative interests of [Your Name].">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script type="module">
+        function setupThemeToggle() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const docElement = document.documentElement;
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    docElement.classList.add('dark');
+                    themeToggleLightIcon.classList.add('hidden');
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    docElement.classList.remove('dark');
+                    themeToggleDarkIcon.classList.add('hidden');
+                    themeToggleLightIcon.classList.remove('hidden');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = docElement.classList.contains('dark') ? 'dark' : 'light';
+                if (currentTheme === 'dark') {
+                    applyTheme('light');
+                } else {
+                    applyTheme('dark');
+                }
+            });
+        }
+
+        function setupMobileMenu() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            setupThemeToggle();
+            setupMobileMenu();
+        });
+    </script>
+    
+</head>
+<body class="antialiased text-gray-800 dark:bg-gray-900 font-sans">
+
+    <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 dark:border-b dark:border-gray-700">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                    Ben Pereira
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <div id="nav-container" class="hidden md:flex space-x-2 md:space-x-4">
+                        <a href="index.html#home" class="nav-link text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Home</a>
+                        <a href="index.html#about" class="nav-link text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">About Me</a>
+                        <a href="index.html#skills" class="nav-link text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Skills</a>
+                        <a href="projects.html" class="nav-link text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Projects</a>
+                        <a href="hobbies.html" class="nav-link font-medium py-2 px-3 rounded-lg transition duration-300 bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">Hobbies</a>
+                        <a href="index.html#contact" class="nav-link text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-4L00">Contact</a>
+                    </div>
+
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-1.636 4.95l1.414 1.414a1 1 0 01-1.414 1.414l-1.414-1.414a1 1 0 011.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1zM6.54 16.05l-1.414 1.414a1 1 0 11-1.414-1.414l1.414-1.414a1 1 0 111.414 1.414zM6.54 3.95l-1.414-1.414A1 1 0 016.54 1.122l1.414 1.414a1 1 0 01-1.414 1.414zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <button id="mobile-menu-button" class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 p-2.5 rounded-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="index.html#home" class="nav-link block text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Home</a>
+                <a href="index.html#about" class="nav-link block text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">About Me</a>
+                <a href="index.html#skills" class="nav-link block text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Skills</a>
+                <a href="projects.html" class="nav-link block text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Projects</a>
+                <a href="hobbies.html" class="nav-link block font-medium py-2 px-3 rounded-lg transition duration-300 bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">Hobbies</a>
+                <a href="index.html#contact" class="nav-link block text-gray-600 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg transition duration-300 dark:text-gray-300 dark:hover:text-indigo-400">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="app-content">
+    
+        <section id="hobbies" class="py-12 md:py-24 dark:bg-gray-900">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center dark:text-white">My Hobbies</h2>
+                <p class="text-center text-gray-600 text-lg mb-12 dark:text-gray-400">
+                    A look into my creative side and personal interests.
+                </p>
+                
+                <div class="mb-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 dark:text-white">Photography</h3>
+                    <p class="text-gray-600 text-lg mb-8 dark:text-gray-400 max-w-3xl mx-auto text-center">
+                        One of my biggest passions is capturing moments through a lens.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+                            <img src="skyline.jpg" alt="My Photo 1" class="w-full h-64 object-cover">
+                            <div class="p-4">
+                                <h4 class="text-lg font-bold text-gray-800 dark:text-white">Mumbai Skyline</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+                            <img src="sky.jpg" alt="My Photo 2" class="w-full h-64 object-cover">
+                            <div class="p-4">
+                                <h4 class="text-lg font-bold text-gray-800 dark:text-white">Sky</h4>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+                            <img src="gateway.jpg" alt="My Photo 3" class="w-full h-64 object-cover">
+                             <div class="p-4">
+                                <h4 class="text-lg font-bold text-gray-800 dark:text-white">Gateway of India</h4>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+                            <img src="Taj.jpg" alt="My Photo 3" class="w-full h-64 object-cover">
+                             <div class="p-4">
+                                <h4 class="text-lg font-bold text-gray-800 dark:text-white">Taj Hotel</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-16 dark:bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <p class="dark:text-gray-400">&copy; 2025 
+                Ben Pereira. 
+                All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
